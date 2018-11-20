@@ -1,0 +1,16 @@
+{
+  "name": "athena-bikes",
+  "version": "1.0.0",
+  "description": "renting bikes app landing page",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Konstantinos Poly",
+  "license": "MIT",
+  "dependencies": {
+    "node": "^10.10.0",
+    "node-sass": "^4.9.3",
+    "sass": "^1.14.0"
+  }
+}

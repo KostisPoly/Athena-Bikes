@@ -1,0 +1,377 @@
+
+$color-primary-light: #7ed56f;
+$color-primary: #55c57a;
+$color-primary-dark: #28b485;
+$color-grey: #777;
+$color-white: #fff;
+$color-black: #000;
+$color-grey-light: #cecece;
+$color-secondary-light: #ffb900;
+$color-secondary-dark:#ff7730;
+$color-tertiary-light:#2998ff;
+$color-tertiary-dark:#0062c4;
+
+@import "../scss/fontawesome.scss";
+@import "../scss/solid.scss";
+
+@import "grid/grid"; 
+@import "animations/animations";
+@import "globals/globals";
+
+*,  //custom resets
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    /* Default browser size 16px, i set it to 10px(concerning browser custom size)*/
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-grey;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+//HEADER SECTION
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to left, rgba($color-primary-light, 0.750), rgba($color-primary-dark, 0.750)), url("../img/bikes3-min.jpg");
+    background-size: cover;
+    background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+
+    .logo-box {
+        position: absolute;
+        top: 6rem;
+        left: 6rem;
+    }
+
+    .text-box {
+        position: absolute;
+        top: 55%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    /* Fix for shaking animations */
+    margin-bottom: 3rem;
+
+    .heading-primary-main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3rem;
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+    }
+
+    .heading-primary-sec {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.5rem;
+        animation-name: moveInRight;
+        animation-duration: 2s;
+    }
+}
+
+//MAIN SECTION
+.section-about {
+    background-color: $color-grey-light;
+    margin-top: -20vh; //To cover the upper polygon background
+    padding: 30rem 0;
+}
+.heading-secondary {
+    font-size: 3.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to left , $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all 1.5s;
+    &:hover {
+        transform: skewY(2deg) skewX(5deg) scale(1.1);
+        text-shadow: .5rem .5rem 1rem rgba($color: #000000, $alpha: .2);
+    }
+}
+
+.component-div {
+    position: relative;
+    &-img {
+        width: 55%;
+        box-shadow: 0 1.5rem 3rem rgba($color: #000000, $alpha: .5);
+        border-radius: 1rem;
+        position: absolute;
+        z-index: 10;
+        transition: all .3s;
+        outline-offset: 1rem; 
+
+        &:hover {
+            outline: 1rem double $color-primary-light;
+            transform: scale(1.1);
+            box-shadow: 0 2.5rem 4rem rgba($color: #000000, $alpha: .5);
+            z-index: 20;
+        }
+    }
+    .img1 {
+        left: 0;
+        top: 0;
+    }
+
+    .img2 {
+        right: 0;
+        top: 5rem;
+    }
+
+    .img3 {
+        left: 8rem;
+        top: 15rem;
+    }
+
+    &:hover &-img:not(:hover) { //Scale down the other 2 images not hovered
+        transform: scale(0.8);
+    }
+    
+}
+//Features section
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to left, rgba($color-primary-light, 0.75), rgba($color-primary-dark, 0.75)), url('../img/bike-city.jpg');
+    background-size: cover;
+    margin-top: -8rem;
+
+    transform: skewY(-7deg);//alternate polygon effect-skew this and then all child in opposite(normal flow)
+    & > * {
+         transform: skewY(7deg);
+    }
+
+    .feature-box {
+        background-color: rgba($color-white , .8);
+        font-size: 1.5rem;
+        padding: 3rem;
+        text-align: center;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: .2);
+        transition: all .5s;
+
+        i {
+            font-size: 5rem;
+            display: inline-block;
+            background-image: linear-gradient(to left, $color-primary-light, $color-primary-dark);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    }
+    .feature-box:hover {
+        transform: translateY(-1.5rem) scale(1.1);
+    }
+}
+
+//Paying plan section
+.section-pay-plan {
+     background-color: $color-grey-light;
+     padding: 25rem 0 15rem 0;
+     margin-top: -8rem;
+}
+//Models section
+.section-models {
+    padding: 10rem 0;
+    position: relative;
+    background-color: rgba($color-white, .4);
+    
+   .model {
+       width: 75%;
+       height: 15rem;
+       margin: 0 auto;
+       box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: .5);
+       background-color: $color-white;
+       border-radius: .3rem;
+       font-size: 1.6rem;
+       transform: skewX(-15deg);
+       transition: all .7s;
+
+       &-img {
+           width: 30%;
+           height: 100%;
+           float: left;
+
+           img {
+               height: 100%;
+               width: 100%;
+           }
+       }
+       &-text {
+           text-align: center;
+           height: 100%;
+           //transform: skewX(15deg);
+           .check-icon {
+               color: $color-secondary-light;
+           }
+           
+       }
+       &:hover {
+           transform: scale(1.4);
+        }
+   }
+   .bg-video {
+       position: absolute;
+       top: 0;
+       left: 0;
+       height: 100%;
+       width: 100%;
+       z-index: -1;
+
+       &-content {
+           height: 100%;
+           width: 100%;
+           object-fit: fill;
+       }
+    }
+}
+//BOOK SECTION
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+}
+.book {
+    background-image: linear-gradient(to right, rgba($color-black, 0.9), rgba($color-white, 0.20)), url('../img/bike-night.jpg');
+    background-size: cover;
+    height: 45rem;
+    border-radius: .3rem;
+    box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: .5);
+    &-form {
+        width: 55%;
+        padding-left: 3rem;
+    }
+}
+.form {
+    h3 {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    &-group:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+    &-input {
+        font-family: inherit;
+        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
+        border-radius: .3rem;
+        background-color: rgba($color-white, .8);
+        border: none;
+        display: block;
+        width: 80%;
+        
+    }
+    &-label {
+
+    }
+    .radio-group {
+       width: 30%;
+       display: inline-block;
+
+       .radio-input {
+           display: none;
+       }
+       
+       .radio-label {
+           font-size: 1.6rem;
+           cursor: pointer; 
+           position: relative;
+           padding-left: 2.5rem;
+           color: $color-primary-light;
+       }
+       .radio-label span {
+           height: 2rem;
+           width: 2rem;
+           color: $color-primary-light;
+           border: .5rem solid $color-primary-light;
+           border-radius: 50%;
+           display: inline-block;
+           position: absolute;
+           top: 0;
+           left: 0;
+
+           &::after {
+               content: "";
+               display: block;
+               height: 1rem;
+               width: 1rem;
+               border-radius: 50%;
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+               background-color: $color-secondary-dark;
+               opacity: 0;
+               transition: opacity .2s;
+           }
+       }
+
+       .radio-input:checked + .radio-label   span::after {
+           opacity: 1;
+       }
+    }
+}
+//FOOTER SECTION
+.footer {
+    background-color: $color-grey;
+    padding: 7rem 0;
+    font-size: 1.5rem;
+    color: $color-tertiary-dark;
+
+    &-logo-box {
+        text-align: center;
+        margin: 3rem;
+    }
+    &-logo {
+        height: auto;
+        width: 10rem;
+        
+        background-image: linear-gradient(to left, $color-primary-light, $color-primary-dark);
+    }
+    &-navigation {
+        border-top: .1rem solid $color-tertiary-dark;
+        padding-top: 2rem;
+        display: inline-block;
+    }
+    &-list {
+       list-style: none; 
+    }
+    &-item {
+        display: inline-block
+    }
+    &-link {
+        transition: all .4s;
+        &:link,
+        &:visited {
+            color: $color-grey-light;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block
+        }
+        &:hover,
+        &:active {
+            color: $color-primary-dark;
+            box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: .5);
+            transform: translateY(-2rem) scale(1.1);
+        }
+    }
+}
