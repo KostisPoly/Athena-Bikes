@@ -2,6 +2,7 @@ $grid-width: 114rem;
 $gutter-vertical: 8rem;
 $gutter-horizontal: 6rem;
 
+@import "../media-queries/media-queries";
 
 @mixin clearfix {
     &::after{
@@ -15,6 +16,11 @@ $gutter-horizontal: 6rem;
     max-width: $grid-width;
     margin: 0 auto;
 
+    @include respond-screen(phone) {
+        max-width: 50rem;
+        padding: 0 2rem;
+    }
+
     &:not(:last-child) {
         margin-bottom: $gutter-vertical; //every column except last has gutter space between
     }
@@ -26,6 +32,19 @@ $gutter-horizontal: 6rem;
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+            
+            @include respond-screen(phone) {
+                margin-right: 0;
+                margin-bottom: 4rem;
+            }
+        }
+
+        @include respond-screen(phone) {
+            width: 100% !important;     //Important full width on mobile
+
+            .btn-box {
+                margin-top: 0;
+            }
         }
     }
 

@@ -17,6 +17,7 @@ $color-tertiary-dark:#0062c4;
 @import "grid/grid"; 
 @import "animations/animations";
 @import "globals/globals";
+@import "media-queries/media-queries";
 
 *,  //custom resets
 *::after,
@@ -28,7 +29,19 @@ $color-tertiary-dark:#0062c4;
 
 html {
     font-size: 62.5%;
-    /* Default browser size 16px, i set it to 10px(concerning browser custom size)*/
+    /* 
+    Defining what 1rem is.
+    Default browser size 16px, i set it to 10px
+    10px/16px = 62.5% (concerning browser custom size)
+    */
+    @include respond-screen (tablet) {
+        font-size: 50%; //1rem = 8px, 8/16 = 50%
+
+    }
+    @include respond-screen (wide) {
+        font-size: 75%; //1rem = 12px, 12/16 = 75%
+
+    }
 }
 
 body {
@@ -39,6 +52,11 @@ body {
     color: $color-grey;
     padding: 3rem;
     box-sizing: border-box;
+
+    @include respond-screen (tablet) {
+        padding: 0; 
+
+    }
 }
 //HEADER SECTION
 .header {
@@ -79,6 +97,11 @@ body {
         letter-spacing: 3rem;
         animation-name: moveInLeft;
         animation-duration: 2s;
+
+        @include respond-screen(phone) {
+            letter-spacing: 1rem;
+            font-size:  4rem;
+        }
     }
 
     .heading-primary-sec {
@@ -88,6 +111,11 @@ body {
         letter-spacing: 1.5rem;
         animation-name: moveInRight;
         animation-duration: 2s;
+        
+        @include respond-screen(phone) {
+            letter-spacing: .5rem;
+            font-size: 2rem;
+        }
     }
 }
 
@@ -123,6 +151,13 @@ body {
         transition: all .3s;
         outline-offset: 1rem; 
 
+        @include respond-screen(phone) {
+            position: relative;
+            float: left;
+            width: 33.33%;
+            box-shadow: 0 1.5rem 3rem rgba($color: #000000, $alpha: .5);
+        }
+
         &:hover {
             outline: 1rem double $color-primary-light;
             transform: scale(1.1);
@@ -133,20 +168,33 @@ body {
     .img1 {
         left: 0;
         top: 0;
+        @include respond-screen(phone) {
+            top: 4rem;
+        }
     }
 
     .img2 {
         right: 0;
         top: 5rem;
+        @include respond-screen(phone) {
+            top: 2rem;
+        }
     }
 
     .img3 {
         left: 8rem;
         top: 15rem;
+        @include respond-screen(phone) {
+            top: 0;
+            left: 0;
+        }
     }
 
     &:hover &-img:not(:hover) { //Scale down the other 2 images not hovered
         transform: scale(0.8);
+        @include respond-screen(phone) {
+            transform: scale(0.9);
+        }
     }
     
 }
@@ -207,6 +255,11 @@ body {
        transform: skewX(-15deg);
        transition: all .7s;
 
+       @include respond-screen(phone) {
+           height: auto;
+           transform: scale(1.4);
+       }
+
        &-img {
            width: 30%;
            height: 100%;
@@ -259,6 +312,11 @@ body {
     &-form {
         width: 55%;
         padding-left: 3rem;
+
+        @include respond-screen(phone) {
+           width: 100%;
+           text-align: center; 
+        }
     }
 }
 .form {

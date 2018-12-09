@@ -3778,6 +3778,10 @@ readers do not read off random characters that represent icons */
 .row {
   max-width: 114rem;
   margin: 0 auto; }
+  @media (max-width: 37.5em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 2rem; } }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
   .row::after {
@@ -3788,6 +3792,15 @@ readers do not read off random characters that represent icons */
     float: left; }
     .row [class^=col-]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 37.5em) {
+        .row [class^=col-]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 4rem; } }
+    @media (max-width: 37.5em) {
+      .row [class^=col-] {
+        width: 100% !important; }
+        .row [class^=col-] .btn-box {
+          margin-top: 0; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -4012,7 +4025,17 @@ readers do not read off random characters that represent icons */
 
 html {
   font-size: 62.5%;
-  /* Default browser size 16px, i set it to 10px(concerning browser custom size)*/ }
+  /* 
+    Defining what 1rem is.
+    Default browser size 16px, i set it to 10px
+    10px/16px = 62.5% (concerning browser custom size)
+    */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -4022,6 +4045,9 @@ body {
   color: #777;
   padding: 3rem;
   box-sizing: border-box; }
+  @media (max-width: 75em) {
+    body {
+      padding: 0; } }
 
 .header {
   height: 95vh;
@@ -4055,6 +4081,10 @@ body {
     letter-spacing: 3rem;
     animation-name: moveInLeft;
     animation-duration: 2s; }
+    @media (max-width: 37.5em) {
+      .heading-primary .heading-primary-main {
+        letter-spacing: 1rem;
+        font-size: 4rem; } }
   .heading-primary .heading-primary-sec {
     display: block;
     font-size: 2rem;
@@ -4062,6 +4092,10 @@ body {
     letter-spacing: 1.5rem;
     animation-name: moveInRight;
     animation-duration: 2s; }
+    @media (max-width: 37.5em) {
+      .heading-primary .heading-primary-sec {
+        letter-spacing: .5rem;
+        font-size: 2rem; } }
 
 .section-about {
   background-color: #cecece;
@@ -4091,6 +4125,12 @@ body {
     z-index: 10;
     transition: all .3s;
     outline-offset: 1rem; }
+    @media (max-width: 37.5em) {
+      .component-div-img {
+        position: relative;
+        float: left;
+        width: 33.33%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.5); } }
     .component-div-img:hover {
       outline: 1rem double #7ed56f;
       transform: scale(1.1);
@@ -4099,14 +4139,27 @@ body {
   .component-div .img1 {
     left: 0;
     top: 0; }
+    @media (max-width: 37.5em) {
+      .component-div .img1 {
+        top: 4rem; } }
   .component-div .img2 {
     right: 0;
     top: 5rem; }
+    @media (max-width: 37.5em) {
+      .component-div .img2 {
+        top: 2rem; } }
   .component-div .img3 {
     left: 8rem;
     top: 15rem; }
+    @media (max-width: 37.5em) {
+      .component-div .img3 {
+        top: 0;
+        left: 0; } }
   .component-div:hover .component-div-img:not(:hover) {
     transform: scale(0.8); }
+    @media (max-width: 37.5em) {
+      .component-div:hover .component-div-img:not(:hover) {
+        transform: scale(0.9); } }
 
 .section-features {
   padding: 20rem 0;
@@ -4152,6 +4205,10 @@ body {
     font-size: 1.6rem;
     transform: skewX(-15deg);
     transition: all .7s; }
+    @media (max-width: 37.5em) {
+      .section-models .model {
+        height: auto;
+        transform: scale(1.4); } }
     .section-models .model-img {
       width: 30%;
       height: 100%;
@@ -4191,6 +4248,10 @@ body {
   .book-form {
     width: 55%;
     padding-left: 3rem; }
+    @media (max-width: 37.5em) {
+      .book-form {
+        width: 100%;
+        text-align: center; } }
 
 .form h3 {
   font-size: 1.8rem;
